@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-var pidfile = flag.String("pidfile", "", "If specified, write a pid to file.")
+var pidfile = flag.String("pidfile", "", "If specified, write pid to file.")
 
 // Write the pidfile based on the flag, if one is set.
 func Write() {
