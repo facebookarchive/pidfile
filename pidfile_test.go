@@ -4,6 +4,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/daaku/go.pidfile"
@@ -81,5 +82,23 @@ func TestNonIsConfiguredError(t *testing.T) {
 	err := errors.New("foo")
 	if pidfile.IsNotConfigured(err) {
 		t.Fatal("should be false")
+	}
+}
+
+func TestMakesDirectories(t *testing.T) {
+	p := filepath.Join(tempfilename(t), "pidfile")
+	pidfile.SetPidfilePath(p)
+
+	if err := pidfile.Write(); err != nil {
+		t.Fatal(err)
+	}
+
+	pid, err := pidfile.Read()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if os.Getpid() != pid {
+		t.Fatalf("was expecting %d but got %d", os.Getpid(), pid)
 	}
 }

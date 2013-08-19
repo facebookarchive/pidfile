@@ -44,7 +44,7 @@ func Write() error {
 		return errNotConfigured
 	}
 
-	if err := os.MkdirAll(filepath.Dir(*pidfile), os.FileMode(0644)); err != nil {
+	if err := os.MkdirAll(filepath.Dir(*pidfile), os.FileMode(0755)); err != nil {
 		return err
 	}
 
