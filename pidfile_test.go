@@ -66,7 +66,7 @@ func TestPidfileNotConfigured(t *testing.T) {
 		t.Fatal("was expecting an error")
 	}
 	if !pidfile.IsNotConfigured(err) {
-		t.Fatal("was expecting IsNotConfigured error but got: %s", err)
+		t.Fatalf("was expecting IsNotConfigured error but got: %s", err)
 	}
 
 	_, err = pidfile.Read()
@@ -74,7 +74,7 @@ func TestPidfileNotConfigured(t *testing.T) {
 		t.Fatal("was expecting an error")
 	}
 	if !pidfile.IsNotConfigured(err) {
-		t.Fatal("was expecting IsNotConfigured error but got: %s", err)
+		t.Fatalf("was expecting IsNotConfigured error but got: %s", err)
 	}
 }
 
