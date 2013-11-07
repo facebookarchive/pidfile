@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/daaku/go.atomicfile"
+	"github.com/ParsePlatform/go.atomicfile"
 )
 
 var (

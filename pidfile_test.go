@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/daaku/go.pidfile"
+	"github.com/ParsePlatform/go.pidfile"
 )
 
 // Make a temporary file, remove it, and return it's path with the hopes that
