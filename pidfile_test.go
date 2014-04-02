@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/ParsePlatform/go.pidfile"
+	"github.com/facebookgo/pidfile"
 )
 
 // Make a temporary file, remove it, and return it's path with the hopes that
