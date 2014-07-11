@@ -19,7 +19,8 @@ var (
 	pidfile          = flag.String("pidfile", "", "If specified, write pid to file.")
 )
 
-// Check if error indicates the pidfile location has not been configured.
+// IsNotConfigured returns true if the error indicates the pidfile location has
+// not been configured.
 func IsNotConfigured(err error) bool {
 	if err == errNotConfigured {
 		return true
@@ -27,12 +28,12 @@ func IsNotConfigured(err error) bool {
 	return false
 }
 
-// Get the configured pidfile path.
+// GetPidfilePath returns the configured pidfile path.
 func GetPidfilePath() string {
 	return *pidfile
 }
 
-// Set the pidfile path.
+// SetPidfilePath sets the pidfile path.
 func SetPidfilePath(p string) {
 	*pidfile = p
 }
