@@ -33,6 +33,7 @@ func tempfilename(t *testing.T) string {
 
 func TestGetSetPath(t *testing.T) {
 	p := tempfilename(t)
+	defer os.Remove(p)
 	pidfile.SetPidfilePath(p)
 
 	if a := pidfile.GetPidfilePath(); a != p {
@@ -42,6 +43,7 @@ func TestGetSetPath(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 	p := tempfilename(t)
+	defer os.Remove(p)
 	pidfile.SetPidfilePath(p)
 
 	if err := pidfile.Write(); err != nil {
@@ -86,7 +88,9 @@ func TestNonIsConfiguredError(t *testing.T) {
 }
 
 func TestMakesDirectories(t *testing.T) {
-	p := filepath.Join(tempfilename(t), "pidfile")
+	dir := tempfilename(t)
+	defer os.RemoveAll(dir)
+	p := filepath.Join(dir, "pidfile")
 	pidfile.SetPidfilePath(p)
 
 	if err := pidfile.Write(); err != nil {
